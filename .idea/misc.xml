@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/user/Downloads/kotlin/tugas_api_chapter5/app/src/main/res/layout/item_film.xml" value="0.3490740740740741" />
+        <entry key="..\:/Kuliah/Semester 5/Android Binar/Chapter 5/Coding/tugas_api_chapter5/app/src/main/res/layout/activity_add_film.xml" value="0.22826086956521738" />
+        <entry key="..\:/Kuliah/Semester 5/Android Binar/Chapter 5/Coding/tugas_api_chapter5/app/src/main/res/layout/activity_login.xml" value="0.17028985507246377" />
+        <entry key="..\:/Kuliah/Semester 5/Android Binar/Chapter 5/Coding/tugas_api_chapter5/app/src/main/res/layout/activity_main.xml" value="0.24728260869565216" />
+        <entry key="..\:/Kuliah/Semester 5/Android Binar/Chapter 5/Coding/tugas_api_chapter5/app/src/main/res/layout/activity_register.xml" value="0.24728260869565216" />
       </map>
     </option>
   </component>
