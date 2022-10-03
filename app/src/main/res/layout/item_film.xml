@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtJudul"
             android:text="Deskripsi Film"
-            app:layout_constraintStart_toEndOf="@+id/imgBerita"
+            app:layout_constraintStart_toEndOf="@+id/imgFilm"
             app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
 
         <TextView
@@ -27,11 +27,11 @@
             android:text="judul Film"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/imgBerita"
+            app:layout_constraintStart_toEndOf="@+id/imgFilm"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imgBerita"
+            android:id="@+id/imgFilm"
             android:layout_width="90dp"
             android:layout_height="90dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,24 +43,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Director"
-            app:layout_constraintStart_toEndOf="@+id/imgBerita"
+            app:layout_constraintStart_toEndOf="@+id/imgFilm"
             app:layout_constraintTop_toBottomOf="@+id/txtJudul" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/ivDelete"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/ivDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
