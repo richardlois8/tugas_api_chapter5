@@ -16,7 +16,13 @@ class AddFilmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddFilmBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.btnAdd.setOnClickListener {
+            var name =binding.tambahNama.text.toString()
+            var image = binding.tambahImage.text.toString()
+            var director = binding.tambahDirector.text.toString()
+            var desc = binding.tambahDesc.text.toString()
+            addFilm(name,image,director,desc)
+        }
 
     }
     fun addFilm(name : String, image : String, director : String, desc : String){
