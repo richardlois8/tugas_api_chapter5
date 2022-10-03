@@ -13,7 +13,6 @@ import retrofit2.Retrofit
 class ViewModelFilm :ViewModel() {
     lateinit var postLDFilm :MutableLiveData<PostDataFilm>
 
-
     init {
         postLDFilm = MutableLiveData()
 
