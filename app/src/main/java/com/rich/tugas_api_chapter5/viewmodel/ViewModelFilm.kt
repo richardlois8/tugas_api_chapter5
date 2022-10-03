@@ -26,7 +26,7 @@ class ViewModelFilm :ViewModel() {
         return liveDataFilm
     }
 
-    fun postLiveDataCar():MutableLiveData<PostDataFilm>{
+    fun postLiveDataFilm():MutableLiveData<PostDataFilm>{
         return postLDFilm
     }
 
