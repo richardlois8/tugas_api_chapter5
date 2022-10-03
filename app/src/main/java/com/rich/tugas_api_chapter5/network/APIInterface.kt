@@ -9,6 +9,9 @@ import retrofit2.http.POST
 
 interface APIInterface {
 
+    @GET("film")
+    fun getAllFilm() : Call<List<GetFilmResponseItem>>
+
     @POST("film")
     fun addDataFilm(@Body request : DataFilm): Call<PostDataFilm>
 
@@ -17,4 +20,5 @@ interface APIInterface {
 
     @POST("user")
     fun registerUser(@Body request : DataUser): Call<PostUserResponse>
+
 }
