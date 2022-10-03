@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/Downloads/kotlin/tugas_api_chapter5/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.126" />
+        <entry key="..\:/Users/user/Downloads/kotlin/tugas_api_chapter5/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.126" />
         <entry key="..\:/Users/user/Downloads/kotlin/tugas_api_chapter5/app/src/main/res/layout/item_film.xml" value="0.3490740740740741" />
       </map>
     </option>
