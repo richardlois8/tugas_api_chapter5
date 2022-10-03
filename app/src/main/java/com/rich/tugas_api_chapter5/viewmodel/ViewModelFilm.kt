@@ -1,6 +1,7 @@
 package com.rich.tugas_api_chapter5.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.rich.tugas_api_chapter5.model.DataFilm
 import com.rich.tugas_api_chapter5.model.PostDataFilm
 import com.rich.tugas_api_chapter5.network.APIClient
@@ -9,7 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class ViewModelFilm {
+class ViewModelFilm :ViewModel() {
     lateinit var postLDFilm :MutableLiveData<PostDataFilm>
 
 
