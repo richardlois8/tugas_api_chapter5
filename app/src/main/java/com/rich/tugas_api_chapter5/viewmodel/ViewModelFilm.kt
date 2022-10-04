@@ -2,10 +2,7 @@ package com.rich.tugas_api_chapter5.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rich.tugas_api_chapter5.model.DataFilm
-import com.rich.tugas_api_chapter5.model.GetFilmResponseItem
-import com.rich.tugas_api_chapter5.model.GetUserResponseItem
-import com.rich.tugas_api_chapter5.model.PostDataFilm
+import com.rich.tugas_api_chapter5.model.*
 import com.rich.tugas_api_chapter5.network.APIClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,10 +13,12 @@ class ViewModelFilm :ViewModel() {
 
     lateinit var liveDataFilm : MutableLiveData<List<GetFilmResponseItem>>
     lateinit var postLDFilm :MutableLiveData<PostDataFilm>
+    lateinit var updateFilm : MutableLiveData<List<PutFilmResponseItem>>
 
     init {
         liveDataFilm = MutableLiveData()
         postLDFilm = MutableLiveData()
+        updateFilm = MutableLiveData()
     }
 
     fun getLiveDataFilem() : MutableLiveData<List<GetFilmResponseItem>>{
@@ -28,6 +27,10 @@ class ViewModelFilm :ViewModel() {
 
     fun postLiveDataFilm():MutableLiveData<PostDataFilm>{
         return postLDFilm
+    }
+
+    fun updatLiveDataFilm() : MutableLiveData<List<PutFilmResponseItem>>{
+        return updateFilm
     }
 
     fun callPostApiFilm(name : String, image : String, director : String, desc : String){
@@ -67,6 +70,27 @@ class ViewModelFilm :ViewModel() {
 
                 override fun onFailure(call: Call<List<GetFilmResponseItem>>, t: Throwable) {
                     liveDataFilm.postValue(null)
+                }
+
+            })
+    }
+
+    fun updateApiFilm(id : Int, name : String, image : String , director: String, description : String){
+        APIClient.instance.updateDataFilm(id,DataFilm(name,image,director,description))
+            .enqueue(object : Callback<List<PutFilmResponseItem>>{
+                override fun onResponse(
+                    call: Call<List<PutFilmResponseItem>>,
+                    response: Response<List<PutFilmResponseItem>>
+                ) {
+                    if (response.isSuccessful){
+                       updateFilm.postValue(response.body())
+                    }else{
+                        updateFilm.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<PutFilmResponseItem>>, t: Throwable) {
+                   updateFilm.postValue(null)
                 }
 
             })

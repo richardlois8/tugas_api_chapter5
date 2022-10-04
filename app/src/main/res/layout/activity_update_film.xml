@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UpdateFilmActivity">
+
+    <EditText
+        android:id="@+id/tambahNama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Nama film"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/tambahImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Link gambar"
+        app:layout_constraintEnd_toEndOf="@+id/tambahNama"
+        app:layout_constraintStart_toStartOf="@+id/tambahNama"
+        app:layout_constraintTop_toBottomOf="@+id/tambahNama" />
+
+    <EditText
+        android:id="@+id/tambahDirector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Sutradara"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/tambahImage"
+        app:layout_constraintStart_toStartOf="@+id/tambahImage"
+        app:layout_constraintTop_toBottomOf="@+id/tambahImage" />
+
+    <EditText
+        android:id="@+id/tambahDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Deskripsi film"
+        app:layout_constraintEnd_toEndOf="@+id/tambahDirector"
+        app:layout_constraintStart_toStartOf="@+id/tambahDirector"
+        app:layout_constraintTop_toBottomOf="@+id/tambahDirector" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tambah film"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tambahDesc" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TAMBAHKAN FILM"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
