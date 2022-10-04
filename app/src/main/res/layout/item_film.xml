@@ -2,33 +2,31 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="12dp"
+    app:contentPadding="8dp">
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/txtDeskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtJudul"
-            android:text="Deskripsi Film"
-            app:layout_constraintStart_toEndOf="@+id/imgFilm"
-            app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
-
         <TextView
             android:id="@+id/txtJudul"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="judul Film"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textAllCaps="true"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/imgFilm"
             app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <ImageView
             android:id="@+id/imgFilm"
@@ -43,11 +41,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Director"
+            android:layout_marginLeft="8dp"
             app:layout_constraintStart_toEndOf="@+id/imgFilm"
             app:layout_constraintTop_toBottomOf="@+id/txtJudul" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/txtDeskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtJudul"
+            android:text="Deskripsi Film"
+            app:layout_constraintStart_toEndOf="@+id/imgFilm"
+            app:layout_constraintTop_toBottomOf="@+id/txtDirector"
+            android:layout_marginLeft="8dp"/>
+
+        <ImageButton
             android:id="@+id/ivEdit"
+            android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -56,8 +66,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivDelete"
+            android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
