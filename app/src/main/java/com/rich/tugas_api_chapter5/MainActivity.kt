@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         showDataFilm()
+        logout()
     }
 
     fun showDataFilm(){
@@ -62,5 +63,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Data berhasil dihapus", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+    fun logout(){
+        binding.btnLogout.setOnClickListener {
+            var pref= sharedPref.edit()
+            pref.clear()
+            pref.apply()
+            var intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "berhasil logout", Toast.LENGTH_SHORT).show()
+        }
     }
 }
