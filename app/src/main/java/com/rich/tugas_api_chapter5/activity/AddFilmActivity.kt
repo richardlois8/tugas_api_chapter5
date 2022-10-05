@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.rich.tugas_api_chapter5.LoginActivity
 import com.rich.tugas_api_chapter5.MainActivity
 import com.rich.tugas_api_chapter5.R
 import com.rich.tugas_api_chapter5.databinding.ActivityAddFilmBinding
@@ -24,6 +25,9 @@ class AddFilmActivity : AppCompatActivity() {
             val director = binding.tambahDirector.text.toString()
             val desc = binding.tambahDesc.text.toString()
             addFilm(name,image,director,desc)
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this,"add film sukses", Toast.LENGTH_SHORT).show()
 
 
         }
