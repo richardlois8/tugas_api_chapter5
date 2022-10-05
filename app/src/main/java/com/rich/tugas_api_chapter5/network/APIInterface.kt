@@ -12,13 +12,14 @@ interface APIInterface {
     @POST("film")
     fun addDataFilm(@Body request : DataFilm): Call<PostDataFilm>
 
+    @PUT("film/{id}")
+    fun updateDataFilm(@Path("id") id : Int,@Body reques :DataFilm ): Call<List<PutFilmResponseItem>>
+
     @GET("user")
     fun getAllUser(): Call<List<GetUserResponseItem>>
 
     @POST("user")
     fun registerUser(@Body request : DataUser): Call<PostUserResponse>
 
-    @PUT("film/{id}")
-    fun updateDataFilm(@Path("id") id : Int,@Body reques :DataFilm ): Call<List<PutFilmResponseItem>>
 
 }
