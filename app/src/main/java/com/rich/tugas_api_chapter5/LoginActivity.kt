@@ -13,7 +13,7 @@ import com.rich.tugas_api_chapter5.viewmodel.ViewModelUser
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var userVM: ViewModelUser
-    private lateinit var sharedprefences :SharedPreferences
+    private lateinit var sharedprefences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +24,8 @@ class LoginActivity : AppCompatActivity() {
         binding.tvRegister.setOnClickListener {
             var inUser = binding.etUsername.text.toString()
             var inPassword = binding.etPassword.text.toString()
-
-
-
             gotoRegister()
-        sharedprefences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
-
+            sharedprefences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
         }
 
 
