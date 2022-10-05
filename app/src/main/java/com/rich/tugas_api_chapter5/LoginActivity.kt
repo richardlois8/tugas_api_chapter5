@@ -27,6 +27,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedprefences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        if(sharedprefences.getBoolean("isLogin",false)){
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
+
         //kalau diklik ke register langsung ke act regis
         binding.tvRegister.setOnClickListener { gotoRegister() }
 
@@ -35,9 +42,6 @@ class LoginActivity : AppCompatActivity() {
             var inUser = binding.etUsername.text.toString()
             var inPassword = binding.etPassword.text.toString()
             auth(inUser, inPassword)
-          //  gotoRegister()
-        sharedprefences = this.getSharedPreferences("user", Context.MODE_PRIVATE)
-
         }
     }
 
@@ -64,16 +68,12 @@ class LoginActivity : AppCompatActivity() {
                                 if (responseBody[i].username.equals(username) && responseBody[i].password.equals(password)
                                 ) {
                                     var addData = sharedprefences.edit()
-                                    addData.putString("address", responseBody[i].address)
-                                    addData.putInt("age", responseBody[i].age!!)
-                                    addData.putString("name", responseBody[i].name)
-                                    addData.putString("password", responseBody[i].password)
-                                    addData.putString("id", responseBody[i].id)
+                                    addData.putString("username", responseBody[i].username)
+                                    addData.putBoolean("isLogin", true)
                                     addData.apply()
                                     Toast.makeText(this@LoginActivity, "Login Berhasil", Toast.LENGTH_SHORT)
                                         .show()
                                     gotoHome()
-                                } else {
                                 }
                             }
                         }

@@ -1,6 +1,7 @@
 package com.rich.tugas_api_chapter5.adapter
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,8 +9,11 @@ import com.bumptech.glide.Glide
 import com.rich.tugas_api_chapter5.activity.UpdateFilmActivity
 import com.rich.tugas_api_chapter5.databinding.ItemFilmBinding
 import com.rich.tugas_api_chapter5.model.GetFilmResponseItem
+import com.rich.tugas_api_chapter5.model.PostDataFilmItem
 
 class FilmAdapter(var listFilm : List<GetFilmResponseItem>): RecyclerView.Adapter<FilmAdapter.ViewHolder>() {
+    var onDeleteClick : ((GetFilmResponseItem) -> Unit)? = null
+
     class ViewHolder(var binding: ItemFilmBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -27,8 +31,12 @@ class FilmAdapter(var listFilm : List<GetFilmResponseItem>): RecyclerView.Adapte
 
         holder.binding.ivEdit.setOnClickListener{
             var edit = Intent(it.context,UpdateFilmActivity::class.java)
-            edit.putExtra("update",listFilm[position].id)
+            edit.putExtra("id",listFilm[position].id)
             it.context.startActivity(edit)
+        }
+
+        holder.binding.ivDelete.setOnClickListener {
+            onDeleteClick?.invoke(listFilm[position])
         }
     }
 

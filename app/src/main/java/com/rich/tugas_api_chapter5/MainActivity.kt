@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import com.rich.tugas_api_chapter5.viewmodel.ViewModelFilm
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    lateinit var viewModel: ViewModelFilm
     lateinit var sharedPref : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+        sharedPref = this.getSharedPreferences("user", Context.MODE_PRIVATE)
         var getDataUsername = sharedPref.getString("username", "")
         binding.tvUsername.text = "Hello, $getDataUsername"
 
@@ -36,14 +38,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showDataFilm(){
-        val viewModel = ViewModelProvider(this).get(ViewModelFilm::class.java)
+        viewModel = ViewModelProvider(this).get(ViewModelFilm::class.java)
 
         viewModel.getLiveDataFilem().observe(this, Observer {
             if (it != null){
                 binding.rvListFilm.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                binding.rvListFilm.adapter = FilmAdapter(it)
+                val adapter = FilmAdapter(it)
+                binding.rvListFilm.adapter = adapter
+                adapter.onDeleteClick = {
+                    deleteFilm(it.id.toInt())
+                }
+                adapter.notifyDataSetChanged()
             }
         })
         viewModel.callApiFilm()
+    }
+
+    fun deleteFilm(id: Int) {
+        viewModel.callDeleteFilm(id)
+        viewModel.getLiveDataDelFilm().observe(this, Observer {
+            if (it != null){
+                showDataFilm()
+                Toast.makeText(this, "Data berhasil dihapus", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

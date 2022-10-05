@@ -12,25 +12,37 @@ import retrofit2.Retrofit
 class ViewModelFilm :ViewModel() {
 
     lateinit var liveDataFilm : MutableLiveData<List<GetFilmResponseItem>>
+    lateinit var LDFilmById : MutableLiveData<PostDataFilmItem>
     lateinit var postLDFilm :MutableLiveData<PostDataFilm>
-    lateinit var updateFilm : MutableLiveData<List<PutFilmResponseItem>>
+    lateinit var updateFilm : MutableLiveData<PostDataFilmItem>
+    lateinit var deleteFilm : MutableLiveData<PostDataFilmItem>
 
     init {
         liveDataFilm = MutableLiveData()
+        LDFilmById = MutableLiveData()
         postLDFilm = MutableLiveData()
         updateFilm = MutableLiveData()
+        deleteFilm = MutableLiveData()
     }
 
     fun getLiveDataFilem() : MutableLiveData<List<GetFilmResponseItem>>{
         return liveDataFilm
     }
 
+    fun getFilmById(id: Int): MutableLiveData<PostDataFilmItem>{
+        return LDFilmById
+    }
+
     fun postLiveDataFilm():MutableLiveData<PostDataFilm>{
         return postLDFilm
     }
 
-    fun updatLiveDataFilm() : MutableLiveData<List<PutFilmResponseItem>>{
+    fun updatLiveDataFilm() : MutableLiveData<PostDataFilmItem>{
         return updateFilm
+    }
+
+    fun getLiveDataDelFilm() : MutableLiveData<PostDataFilmItem>{
+        return deleteFilm
     }
 
     fun callPostApiFilm(name : String, image : String, director : String, desc : String){
@@ -49,6 +61,27 @@ class ViewModelFilm :ViewModel() {
 
                 override fun onFailure(call: Call<PostDataFilm>, t: Throwable) {
                     postLDFilm.postValue(null)
+                }
+
+            })
+    }
+
+    fun callGetFilmById(id : Int){
+        APIClient.instance.getFilmById(id)
+            .enqueue(object : Callback<PostDataFilmItem>{
+                override fun onResponse(
+                    call: Call<PostDataFilmItem>,
+                    response: Response<PostDataFilmItem>
+                ) {
+                    if (response.isSuccessful){
+                        LDFilmById.postValue(response.body())
+                    }else{
+                        LDFilmById.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<PostDataFilmItem>, t: Throwable) {
+                    LDFilmById.postValue(null)
                 }
 
             })
@@ -77,10 +110,10 @@ class ViewModelFilm :ViewModel() {
 
     fun updateApiFilm(id : Int, name : String, image : String , director: String, description : String){
         APIClient.instance.updateDataFilm(id,DataFilm(name,image,director,description))
-            .enqueue(object : Callback<List<PutFilmResponseItem>>{
+            .enqueue(object : Callback<PostDataFilmItem>{
                 override fun onResponse(
-                    call: Call<List<PutFilmResponseItem>>,
-                    response: Response<List<PutFilmResponseItem>>
+                    call: Call<PostDataFilmItem>,
+                    response: Response<PostDataFilmItem>
                 ) {
                     if (response.isSuccessful){
                        updateFilm.postValue(response.body())
@@ -89,8 +122,29 @@ class ViewModelFilm :ViewModel() {
                     }
                 }
 
-                override fun onFailure(call: Call<List<PutFilmResponseItem>>, t: Throwable) {
+                override fun onFailure(call: Call<PostDataFilmItem>, t: Throwable) {
                    updateFilm.postValue(null)
+                }
+
+            })
+    }
+
+    fun callDeleteFilm(id: Int) {
+        APIClient.instance.deleteFilm(id)
+            .enqueue(object : Callback<PostDataFilmItem>{
+                override fun onResponse(
+                    call: Call<PostDataFilmItem>,
+                    response: Response<PostDataFilmItem>
+                ) {
+                    if (response.isSuccessful){
+                        deleteFilm.postValue(response.body())
+                    }else{
+                        deleteFilm.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<PostDataFilmItem>, t: Throwable) {
+                    deleteFilm.postValue(null)
                 }
 
             })
