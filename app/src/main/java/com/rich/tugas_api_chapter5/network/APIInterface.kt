@@ -16,7 +16,7 @@ interface APIInterface {
     fun getAllUser(): Call<List<GetUserResponseItem>>
 
     @POST("user")
-    fun registerUser(@Body request : DataFilm): Call<PostUserResponse>
+    fun registerUser(@Body request : DataUser): Call<PostUserResponse>
 
     @PUT("film/{id}")
     fun updateDataFilm(@Path("id") id : Int,@Body reques :DataFilm ): Call<List<PutFilmResponseItem>>
